@@ -17,7 +17,7 @@ app.post('/addSchool', (req, res) => {
     }
 
     // Insert the new school into the database
-    const query = 'INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO school (name, address, latitude, longitude) VALUES (?, ?, ?, ?)';
     connection.query(query, [name, address, latitude, longitude], (err, results) => {
         if (err) {
             console.error('Error inserting data into the database:', err);
@@ -52,7 +52,7 @@ app.get('/listSchools', (req, res) => {
     const userLat = parseFloat(latitude);
     const userLon = parseFloat(longitude);
 
-    const query = 'SELECT id, name, address, latitude, longitude FROM schools';
+    const query = 'SELECT id, name, address, latitude, longitude FROM school';
     connection.query(query, (err, results) => {
         if (err) {
             console.error('Error fetching data from the database:', err);
